@@ -1,0 +1,31 @@
+import pygame
+import sys
+
+pygame.init()
+clock = pygame.time.Clock()
+FPS = 75
+
+WIDTH = 700
+HEIGHT = 500
+
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('Пинг-понг')
+
+WHITE = (255, 255, 255)
+img = pygame.image.load('img.png')
+img = pygame.transform.scale(img, (WIDTH, HEIGHT))
+
+finish = False
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+
+        if not finish:
+            window.fill(WHITE)
+
+            pygame.display.update()
+    clock.tick(FPS)
+    if not finish:
+        window.blit(img, (0, 0))
+        pygame.display.update()
